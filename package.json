@@ -1,0 +1,26 @@
+{
+  "name": "@verno.digital/use-animation-height",
+  "version": "0.0.1",
+  "main": "dist/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --format=esm",
+    "postbuild": "tsc --project tsconfig.build.json"
+  },
+  "keywords": [
+    "@verno.digital"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repcolding/use-animation-height.git"
+  },
+  "author": "telegramm: @repcolding; site: https://verno.digital",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "esbuild": "^0.17.18",
+    "prettier": "^2.8.8",
+    "tsc": "^2.0.4",
+    "typescript": "^5.0.4"
+  },
+  "private": false
+}
