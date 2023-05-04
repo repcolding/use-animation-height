@@ -12,4 +12,14 @@ export const setHeightClose = (el: HTMLElement) => {
     key: 'height',
     value: 0
   })
+
+  setAsyncProperty(el, {
+    key: 'paddingTop',
+    value: 0
+  })
+
+  setAsyncProperty(el, {
+    key: 'paddingBottom',
+    value: 0
+  })
 }

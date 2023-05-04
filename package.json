@@ -1,7 +1,7 @@
 {
   "name": "@verno.digital/use-animation-height",
-  "version": "0.0.1",
-  "main": "dist/index.ts",
+  "version": "1.0.0",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "esbuild src/index.ts --outfile=dist/index.js --bundle --format=esm",
