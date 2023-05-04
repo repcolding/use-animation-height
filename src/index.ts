@@ -6,6 +6,16 @@ interface Options {
   timeout?: number
 }
 
+/**
+ * Обязательные аттрибуты для el:
+ *
+ * .class-in-el {
+ *   --padding-top: Npx;
+ *   --padding-bottom: Npx;
+ *   overflow: hidden;
+ *   transition: [duration] height [timing];
+ * }
+ * */
 export const useAnimationHeight = (el: HTMLElement, options: Options) => {
   const { timeout } = options ?? {}
 
