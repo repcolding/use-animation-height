@@ -1,6 +1,6 @@
 {
   "name": "@verno.digital/use-animation-height",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "keywords": [
     "@verno.digital"
   ],
@@ -19,6 +19,10 @@
   },
   "main": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "esbuild src/index.ts --outfile=dist/index.mjs --bundle --format=esm",
     "postbuild": "tsc --project tsconfig.build.json"
