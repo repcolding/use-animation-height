@@ -1,8 +1,5 @@
 # use animation height
 
-Анимированное изменение высоты, через ```css transition```,
-с установкой в ```auto```
-
 ***Локальный модуль verno.digital***
 
 ## Установка
