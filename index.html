@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .content {
+      box-sizing: border-box;
+      background: red;
+      --padding-top: 8px;
+      --padding-bottom: 8px;
+      overflow: hidden;
+      transition: 200ms height linear;
+      padding-top: var(--padding-top);
+      padding-bottom: var(--padding-bottom);
+    }
+  </style>
+</head>
+<body>
+
+<div id="openE">OPEN</div>
+<div id="closeE">CLOSE</div>
+
+<div class="content">
+  <div style="height: 100px;"></div>
+</div>
+
+<script type="module">
+  import { useAnimationHeight } from '/dist/index.js';
+
+  const content = document.querySelector('.content')
+
+  const {open, close} = useAnimationHeight(content, { timeout: 200 })
+
+  openE.addEventListener('click', () => {
+    open()
+  })
+
+  closeE.addEventListener('click', () => {
+    close()
+  })
+</script>
+
+</body>
+</html>

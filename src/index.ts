@@ -2,20 +2,61 @@ import { setHeightClose } from './utils/set-height-close'
 import { setHeightOpen } from './utils/set-height-open'
 import { getDuration } from './utils/get-duration'
 
+interface ClassList {
+  add?: string
+  remove?: string
+}
+
 interface Options {
   timeout?: number
 }
 
 /**
- * Обязательные аттрибуты для el:
+ * Example:
  *
- * .class-in-el {
- *   --padding-top: Npx;
- *   --padding-bottom: Npx;
+ * .animated-dom {
+ *   --padding-top: 18px;
+ *   --padding-bottom: 18px;
+ *
+ *   padding-top: var(--padding-top);
+ *   padding-bottom: var(--padding-bottom);
  *   overflow: hidden;
- *   transition: [duration] height [timing];
+ *   height: auto;
+ *   transition:
+ *     [vars.$duration] height [vars.$timing],
+ *     [vars.$duration] padding [vars.$timing],
+ *     [vars.$duration] opacity [vars.$timing];
+ *
+ *   @media (width < [vars.$media-768px]) {
+ *     --padding-top: 12px;
+ *     --padding-bottom: 12px;
+ *   }
+ *
+ *   &:not(&--active) {
+ *     opacity: 0;
+ *     padding-top: 0;
+ *     padding-bottom: 0;
+ *     height: 0;
+ *   }
  * }
  * */
+
+/**
+ * Example:
+ *
+ * const { open, close } = useAnimationHeight(domEl)
+ *
+ * open({
+ *   add: 'animated-dom--active'
+ * })
+ *
+ * OR
+ *
+ * close({
+ *   remove: 'animated-dom--active'
+ * })
+ * */
+
 export const useAnimationHeight = (el: HTMLElement, options: Options) => {
   const { timeout } = options ?? {}
 
@@ -26,7 +67,7 @@ export const useAnimationHeight = (el: HTMLElement, options: Options) => {
     return timeout ? timeout : getDuration(el)
   }
 
-  const open = () => {
+  const open = (classList?: ClassList) => {
     if (isStateActive === 'open') {
       return
     } else {
@@ -35,17 +76,23 @@ export const useAnimationHeight = (el: HTMLElement, options: Options) => {
 
     setHeightOpen(el)
     interval = setTimeout(() => (el.style.height = 'auto'), getTimeout())
+
+    classList?.add && el.classList.add(classList.add)
+    classList?.remove && el.classList.remove(classList.remove)
   }
 
-  const close = () => {
+  const close = (classList?: ClassList) => {
     if (isStateActive === 'close') {
       return
     } else {
       isStateActive = 'close'
     }
 
-    setHeightClose(el)
     interval && clearTimeout(interval)
+    setHeightClose(el)
+
+    classList?.add && el.classList.add(classList.add)
+    classList?.remove && el.classList.remove(classList.remove)
   }
 
   return {
